@@ -1,0 +1,22 @@
+#ifndef TEXTURE_H
+#define TEXTURE_H
+#include <GLFW/glfw3.h>
+#include <iostream>
+#include <GL/gl.h>
+#include <GL/glew.h>
+
+class Texture{
+    public:
+	
+	GLuint T;
+	
+        Texture(char* s,GLuint Type){
+
+ 	    T = 1;	
+ 	    glGenTexture
+
+
+        }
+
+};
+#endif

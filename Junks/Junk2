@@ -1,0 +1,49 @@
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
+
+//#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
+#include <GL/gl.h>
+#include <GL/glew.h>
+
+class Triangle{
+    public:
+	//Gluint =0;
+	//Like Java
+	//Create triangle object which will set up necassary components
+  	Triangle(GLfloat* vertices,int R,int C,GLuint* indices,GLuint* VAO, GLuint *VBO, GLuint *EBO){
+        //Need 3 rows and 3 columns	
+ 	/*if(R!=3 || C!=3){
+	printf("\n Error! Rows and Columns must be 3X3!");
+	exit(-1);
+	}
+	*/
+
+	//Given three points, can create triangle now
+	//BUFFER BINDING 1//
+   	glGenVertexArrays(1,VAO);
+   	glBindVertexArray(*VAO);
+  
+   	//Vertices go into vertex buffer
+   	glBindBuffer(GL_ARRAY_BUFFER,*VBO);
+   	glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
+
+   	//Element Buffer gets idx array
+   	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,*EBO);
+   	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
+
+   	//Set Vtex attrib pointers
+   	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(GL_FLOAT),(GLvoid*)0);
+    	glEnableVertexAttribArray(0);
+    
+   	// unbind the vertex array object
+   	glBindVertexArray(0);  
+
+   	//BUFFER BINDING 1//
+	
+	}
+
+};
+
+#endif
